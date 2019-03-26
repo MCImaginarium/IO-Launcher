@@ -4,7 +4,7 @@
 * https://www.worldautomation.net
 */
 
-package com.launcher.concurrency;
+package org.iocraft.concurrency;
 
 import com.google.common.base.Function;
 import com.google.common.util.concurrent.FutureCallback;

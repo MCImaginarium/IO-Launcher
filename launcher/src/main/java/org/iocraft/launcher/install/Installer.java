@@ -6,7 +6,7 @@
 
 package org.iocraft.launcher.install;
 
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.util.SharedLocale;
 import lombok.Getter;
 import lombok.NonNull;

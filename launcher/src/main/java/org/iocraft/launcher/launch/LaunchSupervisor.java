@@ -9,7 +9,7 @@ package org.iocraft.launcher.launch;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.launcher.concurrency.ObservableFuture;
+import org.iocraft.concurrency.ObservableFuture;
 import org.iocraft.launcher.Instance;
 import org.iocraft.launcher.FancyLauncher;
 import org.iocraft.launcher.auth.Session;

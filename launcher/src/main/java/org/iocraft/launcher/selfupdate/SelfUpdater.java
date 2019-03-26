@@ -6,8 +6,8 @@
 
 package org.iocraft.launcher.selfupdate;
 
-import com.launcher.concurrency.DefaultProgress;
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.DefaultProgress;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.FancyLauncher;
 import org.iocraft.launcher.install.FileMover;
 import org.iocraft.launcher.install.Installer;

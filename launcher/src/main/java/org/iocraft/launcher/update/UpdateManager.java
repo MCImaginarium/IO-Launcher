@@ -9,7 +9,7 @@ package org.iocraft.launcher.update;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.launcher.concurrency.ObservableFuture;
+import org.iocraft.concurrency.ObservableFuture;
 import org.iocraft.launcher.FancyLauncher;
 import org.iocraft.launcher.dialog.ProgressDialog;
 import org.iocraft.launcher.selfupdate.SelfUpdater;

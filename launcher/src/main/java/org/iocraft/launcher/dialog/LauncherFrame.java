@@ -1,6 +1,6 @@
 package org.iocraft.launcher.dialog;
 
-import com.launcher.concurrency.ObservableFuture;
+import org.iocraft.concurrency.ObservableFuture;
 import org.iocraft.launcher.FancyBackgroundPanel;
 import org.iocraft.launcher.Instance;
 import org.iocraft.launcher.InstanceList;

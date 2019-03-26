@@ -6,7 +6,7 @@
 
 package org.iocraft.launcher.install;
 
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 
 import java.io.File;
 import java.net.URL;

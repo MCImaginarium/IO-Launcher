@@ -6,7 +6,7 @@
 
 package org.iocraft.launcher;
 
-import com.launcher.concurrency.ObservableFuture;
+import org.iocraft.concurrency.ObservableFuture;
 import org.iocraft.launcher.dialog.ProgressDialog;
 import org.iocraft.launcher.swing.SwingHelper;
 import org.iocraft.launcher.update.HardResetter;

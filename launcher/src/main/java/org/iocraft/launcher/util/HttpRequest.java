@@ -8,7 +8,7 @@ package org.iocraft.launcher.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 import lombok.Getter;
 import lombok.extern.java.Log;
 

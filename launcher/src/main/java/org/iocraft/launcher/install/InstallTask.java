@@ -6,7 +6,7 @@
 
 package org.iocraft.launcher.install;
 
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 
 public interface InstallTask extends ProgressObservable {
 

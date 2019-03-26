@@ -4,7 +4,7 @@
 * https://www.worldautomation.net
 */
 
-package com.launcher.concurrency;
+package org.iocraft.concurrency;
 
 /**
  * Implementations of this interface can provide information on the progress

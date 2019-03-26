@@ -6,7 +6,7 @@
 
 package org.iocraft.launcher.update;
 
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.Instance;
 import org.iocraft.launcher.LauncherException;
 import org.iocraft.launcher.LauncherUtils;

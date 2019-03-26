@@ -4,12 +4,12 @@
 * https://www.worldautomation.net
 */
 
-package com.launcher.concurrency;
+package org.iocraft.concurrency;
 
 import lombok.Data;
 
 /**
- * A simple default implementation of {@link com.launcher.concurrency.ProgressObservable}
+ * A simple default implementation of {@link org.iocraft.concurrency.ProgressObservable}
  * with settable properties.
  */
 @Data

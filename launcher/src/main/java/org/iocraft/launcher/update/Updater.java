@@ -7,9 +7,9 @@
 package org.iocraft.launcher.update;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.launcher.concurrency.DefaultProgress;
-import com.launcher.concurrency.ProgressFilter;
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.DefaultProgress;
+import org.iocraft.concurrency.ProgressFilter;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.Instance;
 import org.iocraft.launcher.FancyLauncher;
 import org.iocraft.launcher.LauncherException;

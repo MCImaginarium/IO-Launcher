@@ -7,7 +7,7 @@
 package org.iocraft.launcher;
 
 import com.google.common.io.Files;
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.model.minecraft.Asset;
 import org.iocraft.launcher.model.minecraft.AssetsIndex;
 import org.iocraft.launcher.model.minecraft.VersionManifest;

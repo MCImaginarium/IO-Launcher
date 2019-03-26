@@ -6,8 +6,8 @@
 
 package org.iocraft.launcher;
 
-import com.launcher.concurrency.DefaultProgress;
-import com.launcher.concurrency.ProgressObservable;
+import org.iocraft.concurrency.DefaultProgress;
+import org.iocraft.concurrency.ProgressObservable;
 import org.iocraft.launcher.model.modpack.ManifestInfo;
 import org.iocraft.launcher.model.modpack.PackageList;
 import org.iocraft.launcher.persistence.Persistence;
