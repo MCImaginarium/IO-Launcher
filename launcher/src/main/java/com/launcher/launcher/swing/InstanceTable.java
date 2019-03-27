@@ -19,7 +19,7 @@ public class InstanceTable extends DefaultTable {
     public void setModel(TableModel dataModel) {
         super.setModel(dataModel);
         try {
-            getColumnModel().getColumn(0).setMaxWidth(30);
+            getColumnModel().getColumn(0).setMaxWidth(40);
         } catch (ArrayIndexOutOfBoundsException e) {
         }
     }
