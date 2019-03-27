@@ -39,7 +39,7 @@ public class AboutDialog extends JDialog {
         
 		JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-about-discord.png>");
 		container.add(discordButton, "align center, wrap");
-		discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/Dvjvtee"));
+		discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/UGHFX3Q"));
 		
         JButton sourceCodeButton = new JButton("Website");      
 		container.add(sourceCodeButton, "span, split 3, sizegroup bttn");

@@ -137,7 +137,7 @@ public class LauncherFrame extends JFrame {
 
 	JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-discord.png>");
 	container.add(discordButton);
-	discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/Dvjvtee"));
+	discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/UGHFX3Q"));
 	
 	JButton webButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-web.png>");
 	container.add(webButton);
