@@ -97,7 +97,7 @@ public class InstanceTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0:
                 instance = instances.get(rowIndex);
-				String waMain = "WorldAutomation.Net";
+				String waMain = "IO-Launcher";
 				String compare = instance.getName().toLowerCase();
                 if (!instance.isLocal()) {
                     return downloadIcon;

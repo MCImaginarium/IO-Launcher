@@ -1,5 +1,5 @@
 /*
-* WorldAutomation.Net Launcher
+* IO-Launcher Launcher
 * Based off of sk89q's Source
 * https://www.worldautomation.net
 */

@@ -513,7 +513,7 @@ public class LauncherFrame extends JFrame {
     private void launch() { // NOTICE: This enforces 64-bit Java!!!
         String version = System.getProperty("sun.arch.data.model");
         if(!version.contains("64")) {
-            SwingHelper.showErrorDialog(null, "Uh oh! You need 64-Bit Java 8 minimum!", "WorldAutomation.Net");
+            SwingHelper.showErrorDialog(null, "Uh oh! You need 64-Bit Java 8 minimum!", "IO-Launcher");
             try {
                 Desktop.getDesktop().browse(new URI("https://java.com/en/download/"));
             } catch (IOException | URISyntaxException e) {
