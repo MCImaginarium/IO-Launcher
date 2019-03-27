@@ -15,11 +15,21 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.java.Log;
 import net.miginfocom.swing.MigLayout;
-
+//import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import java.awt.*;
+//import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Desktop;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.BorderLayout;
+import java.util.List;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -29,6 +39,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.awt.image.BufferedImage;
 
 import static com.launcher.launcher.util.SharedLocale.tr;
 import java.io.IOException;
@@ -64,26 +75,23 @@ public class LauncherFrame extends JFrame {
      * @param launcher the launcher
      */
     public LauncherFrame(@NonNull FancyLauncher launcher) {
-        super(tr("launcher.title", launcher.getVersion()));
-
+        //super(tr("launcher.title", launcher.getVersion()));
         this.launcher = launcher;
         instancesModel = new InstanceTableModel(launcher.getInstances());
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(200, 550));
         //setResizable(false);
         initComponents();
         pack();
         setLocationRelativeTo(null);
-
-        SwingHelper.setFrameIcon(this, FancyLauncher.class, "icon.png");
-        
+		Image windowIconTrans = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
+		List<Image> icons  = new ArrayList();
+		icons.add(new ImageIcon(getClass().getResource("/com/launcher/launcher/16.png")).getImage());
+		icons.add(new ImageIcon(getClass().getResource("/com/launcher/launcher/32.png")).getImage());
+		super.setIconImages(icons);
+        //super.setIconImage(windowIconTrans);
         setSize(300, 550);
         setLocationRelativeTo(null);
-
-        //SwingHelper.removeOpaqueness(getInstancesTable());
-        //SwingHelper.removeOpaqueness(getInstanceScroll());
-        //getInstanceScroll().setBorder(BorderFactory.createEmptyBorder());
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -98,7 +106,6 @@ public class LauncherFrame extends JFrame {
         container.setLayout(new GridLayout(0, 1));
 		Font bigButton = new Font("MS Sans Serif", Font.BOLD, 25);
 		Font mediumButton = new Font("MS Sans Serif", Font.BOLD, 12);
-
         //webView = createNewsPanel();
 		//webView.setPreferredSize(new Dimension(400, 300));
 		//splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, webView, instanceScroll);
@@ -469,10 +476,6 @@ public class LauncherFrame extends JFrame {
 
         //START Advanced Button
         JButton advButton = new JButton();
-        //try {
-            //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
-            //launchButton.setIcon(new ImageIcon(launchImage));
-        //} catch (Exception ex) {}
 		advButton.setFont(bigButton);
         advButton.setText("ADVANCED MENU");
         advButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -486,23 +489,28 @@ public class LauncherFrame extends JFrame {
                 advButton.setText(null);
                 advButton.setText("ADVANCED MENU");
                 advButton.setBackground(UIManager.getColor("control"));
-                //try {
-                    //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
-                    //launchButton.setIcon(new ImageIcon(launchImage));
-                //} catch (Exception ex) {}   
                 advButton.setPreferredSize(new Dimension(72, 50));
             }
         });
         advButton.setSize(100,50);
         container.add(advButton);
 		advButton.addMouseListener(new MouseAdapter() {
+			public int menuState = 0;
             @Override
             public void mousePressed(MouseEvent arg0) {
                 if (arg0.getButton() == MouseEvent.BUTTON1){
 					Instance selected = null;
 					selected = launcher.getInstances().get(0);
-					Integer width = advButton.getWidth();
-					popupInstanceMenu(container, 0, -1, selected);
+					//check if already open or not
+					int buttonHeight = advButton.getHeight();
+					if(menuState == 0) {
+						popupInstanceMenu(container, 0, buttonHeight+10, selected);
+						menuState = 1;
+						//System.out.println("Already open!");
+					} else {
+						menuState = 0;
+						//System.out.println("Is not open!");
+					}
                     //System.out.println("Left button clicked, select a task or click Play!");
                 } else if (arg0.getButton() == MouseEvent.BUTTON2){
                     //System.out.println("Middle button clicked, select a task or click Play!");
@@ -595,27 +603,6 @@ public class LauncherFrame extends JFrame {
                 popupInstanceMenu(e.getComponent(), 0, 0, selected);
             }
         });
-		//magic :) love u fanbus
-		launchButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent arg0) {
-                if (arg0.getButton() == MouseEvent.BUTTON1){
-					//Instance selected = null;
-					//selected = launcher.getInstances().get(0);
-					//popupInstanceMenu(launchButton, -1, -205, selected);
-                    //System.out.println("Left button clicked, select a task or click Play!");
-                } else if (arg0.getButton() == MouseEvent.BUTTON2){
-                    //System.out.println("Middle button clicked, select a task or click Play!");
-                } else if (arg0.getButton() == MouseEvent.BUTTON3) {
-					Instance selected = null;
-					selected = launcher.getInstances().get(0);
-					Integer width = launchButton.getWidth();
-					popupInstanceMenu(container, 0, -1, selected);
-                    //System.out.println("Right button clicked, select a task or click Play!");
-                } 
-            }
-        });
-		
     }
     
     protected JPanel createContainerPanel() {
