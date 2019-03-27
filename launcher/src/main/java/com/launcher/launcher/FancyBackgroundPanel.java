@@ -16,11 +16,11 @@ public class FancyBackgroundPanel extends JPanel {
     private Image background;
 
     public FancyBackgroundPanel() {
-        try {
-            background = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("bg.png"));
-        } catch (IOException e) {
+        //try {
+            //background = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("bg.png"));
+        //} catch (IOException e) {
             background = null;
-        }
+        //}
     }
 
     @Override

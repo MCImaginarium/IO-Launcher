@@ -70,7 +70,7 @@ public class LauncherFrame extends JFrame {
         instancesModel = new InstanceTableModel(launcher.getInstances());
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //setMinimumSize(new Dimension(400, 400));
+        setMinimumSize(new Dimension(200, 550));
         //setResizable(false);
         initComponents();
         pack();
@@ -78,7 +78,7 @@ public class LauncherFrame extends JFrame {
 
         SwingHelper.setFrameIcon(this, FancyLauncher.class, "icon.png");
         
-        setSize(800, 530);
+        setSize(300, 550);
         setLocationRelativeTo(null);
 
         //SwingHelper.removeOpaqueness(getInstancesTable());
@@ -95,8 +95,12 @@ public class LauncherFrame extends JFrame {
 
     private void initComponents() {
         JPanel container = createContainerPanel();
-        container.setLayout(new MigLayout("fill, insets dialog", "[][]push[][]", "[grow][]"));
-        webView = createNewsPanel();
+        container.setLayout(new GridLayout(0, 1));
+		Font bigButton = new Font("MS Sans Serif", Font.BOLD, 25);
+		Font mediumButton = new Font("MS Sans Serif", Font.BOLD, 12);
+
+        //webView = createNewsPanel();
+		//webView.setPreferredSize(new Dimension(400, 300));
 		//splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, webView, instanceScroll);
 		//splitPane.setSize(780, 530);
 		isUpdateable = launcher.getUpdateManager().getPendingUpdate();
@@ -136,21 +140,59 @@ public class LauncherFrame extends JFrame {
         //splitPane.setDividerLocation(9999);
         //splitPane.setDividerSize(0);
         //splitPane.setOpaque(false);
-        container.add(webView, "grow, wrap, span 0, gapbottom unrel");
+        //container.add(webView);
 
         instancesTable.setModel(instancesModel);
-		instancesTable.setRowHeight(48);
+		instancesTable.setRowHeight(1);
 		instancesTable.setOpaque(false);
-       //container.add(webView);
-	    container.add(instanceScroll, "grow, span 0, w null:110, h null:48");
-       //SwingHelper.flattenJSplitPane(splitPane);
-    
+		instancesTable.setVisible(false);
+        //container.add(webView);
+	    //container.add(instanceScroll, "span 0, h 0:0");
+
+        //SwingHelper.flattenJSplitPane(splitPane);
+		instanceScroll.setVisible(false);
+		instanceScroll.setPreferredSize(new Dimension(0, 0));
+
+        //START Logo Button
+        JButton logoButton = new JButton();
+		logoButton.setFont(mediumButton);
+        try {
+            Image logoImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/logo.png"));
+            logoButton.setIcon(new ImageIcon(logoImage));
+        } catch (Exception ex) {}  
+        logoButton.addActionListener(ActionListeners.openURL(this, "https://www.iocraft.org"));
+        logoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoButton.setIcon(null);
+                try {
+                    Image logoImageYellow = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/yellow.png"));
+                    logoButton.setIcon(new ImageIcon(logoImageYellow));
+                } catch (Exception ex) {}  
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                try {
+                    Image logoImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/logo.png"));
+                    logoButton.setIcon(new ImageIcon(logoImage));
+                } catch (Exception ex) {}  
+            }
+        });
+        container.add(logoButton);
+        //END Logo Button
+	    super.add(instanceScroll);		
+		JPanel subContainer = createContainerPanel();
+        subContainer.setLayout(new GridLayout(0, 3));
+		JPanel subSubContainer = createContainerPanel();
+        subSubContainer.setLayout(new GridLayout(2, 1));
+		container.add(subSubContainer);
+		container.add(subContainer);
+
         //START Refresh Button
         JButton refreshButton = new JButton();
+		refreshButton.setFont(mediumButton);
         try {
             Image refreshImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/refresh.png"));
             refreshButton.setIcon(new ImageIcon(refreshImage));
-        } catch (Exception ex) {}   
+        } catch (Exception ex) {} 
         refreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 refreshButton.setIcon(null);
@@ -169,7 +211,7 @@ public class LauncherFrame extends JFrame {
             }
         });
         refreshButton.setPreferredSize(new Dimension(72, 50));
-        container.add(refreshButton);
+        subSubContainer.add(refreshButton);
 		refreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				refreshButton.setText("UPDATE");
@@ -188,13 +230,15 @@ public class LauncherFrame extends JFrame {
         //END Refresh Button
 
         //START Update Check Box and Text Container
-        container.add(updateCheck);
-		updateCheck.setOpaque(false);
-        updateCheck.setPreferredSize(new Dimension(72, 50));
+        //container.add(updateCheck);
+		//updateCheck.setVisible(false);
+		//updateCheck.setOpaque(false);
+        updateCheck.setSize(new Dimension(0, 0));
         //END Update Check Box and Text Container
 
         //START Discord Button
         JButton discordButton = new JButton();
+		discordButton.setFont(mediumButton);
         try {
             Image discordImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/discord.png"));
             discordButton.setIcon(new ImageIcon(discordImage));
@@ -218,39 +262,12 @@ public class LauncherFrame extends JFrame {
             }
         });
         discordButton.setPreferredSize(new Dimension(72, 50));
-        container.add(discordButton);
+        subContainer.add(discordButton);
         //END Discord Button
         
-        //START Web Button
-        JButton webButton = new JButton();
-        try {
-            Image webImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/web.png"));
-            webButton.setIcon(new ImageIcon(webImage));
-        } catch (Exception ex) {}  
-        webButton.addActionListener(ActionListeners.openURL(this, "https://www.iocraft.org"));
-        webButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                webButton.setIcon(null);
-                webButton.setText("WEBSITE");
-                webButton.setBackground(Color.GREEN);
-                webButton.setPreferredSize(new Dimension(72, 50));
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                webButton.setText(null);
-                webButton.setBackground(UIManager.getColor("control"));
-                try {
-                    Image webImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/web.png"));
-                    webButton.setIcon(new ImageIcon(webImage));
-                } catch (Exception ex) {}  
-                webButton.setPreferredSize(new Dimension(72, 50));
-            }
-        });
-        webButton.setPreferredSize(new Dimension(72, 50));
-        container.add(webButton);
-        //END Web Button
-
         //START Log Button
         JButton logButton = new JButton();
+		logButton.setFont(mediumButton);
         try {
             Image logImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/log.png"));
             logButton.setIcon(new ImageIcon(logImage));
@@ -273,7 +290,7 @@ public class LauncherFrame extends JFrame {
             }
         });
         logButton.setPreferredSize(new Dimension(72, 50));
-        container.add(logButton);
+        subContainer.add(logButton);
         logButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -328,6 +345,7 @@ public class LauncherFrame extends JFrame {
 
         //START SpecUpdate Button
         JButton specsUpdateButton = new JButton();
+		specsUpdateButton.setFont(mediumButton);
         if (isUpdateable) {
             try {
                 Image specsUpdateImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/update.png"));
@@ -364,7 +382,7 @@ public class LauncherFrame extends JFrame {
             }
         });
         specsUpdateButton.setPreferredSize(new Dimension(72, 50));
-        container.add(specsUpdateButton);
+        subContainer.add(specsUpdateButton);
         specsUpdateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -404,7 +422,8 @@ public class LauncherFrame extends JFrame {
         try {
             Image optionsImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/options.png"));
             optionsButton.setIcon(new ImageIcon(optionsImage));
-        } catch (Exception ex) {}   
+        } catch (Exception ex) {}
+		optionsButton.setFont(mediumButton);
         optionsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 optionsButton.setIcon(null);
@@ -423,7 +442,7 @@ public class LauncherFrame extends JFrame {
             }
         });
         optionsButton.setPreferredSize(new Dimension(72, 50));
-        container.add(optionsButton);
+        subSubContainer.add(optionsButton);
         optionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -447,13 +466,60 @@ public class LauncherFrame extends JFrame {
 			}
 		});
         //END Options Button
-       
+
+        //START Advanced Button
+        JButton advButton = new JButton();
+        //try {
+            //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
+            //launchButton.setIcon(new ImageIcon(launchImage));
+        //} catch (Exception ex) {}
+		advButton.setFont(bigButton);
+        advButton.setText("ADVANCED MENU");
+        advButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                advButton.setIcon(null);
+                advButton.setText("ADVANCED MENU");
+                advButton.setBackground(Color.GREEN);
+                advButton.setPreferredSize(new Dimension(72, 50));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                advButton.setText(null);
+                advButton.setText("ADVANCED MENU");
+                advButton.setBackground(UIManager.getColor("control"));
+                //try {
+                    //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
+                    //launchButton.setIcon(new ImageIcon(launchImage));
+                //} catch (Exception ex) {}   
+                advButton.setPreferredSize(new Dimension(72, 50));
+            }
+        });
+        advButton.setSize(100,50);
+        container.add(advButton);
+		advButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent arg0) {
+                if (arg0.getButton() == MouseEvent.BUTTON1){
+					Instance selected = null;
+					selected = launcher.getInstances().get(0);
+					Integer width = advButton.getWidth();
+					popupInstanceMenu(container, 0, -1, selected);
+                    //System.out.println("Left button clicked, select a task or click Play!");
+                } else if (arg0.getButton() == MouseEvent.BUTTON2){
+                    //System.out.println("Middle button clicked, select a task or click Play!");
+                } else if (arg0.getButton() == MouseEvent.BUTTON3) {
+                    //System.out.println("Right button clicked, select a task or click Play!");
+                } 
+            }
+        });
+        //END Advanced Button
+		
         //START Launch Button
         JButton launchButton = new JButton();
         //try {
             //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
             //launchButton.setIcon(new ImageIcon(launchImage));
-        //} catch (Exception ex) {}   
+        //} catch (Exception ex) {}
+		launchButton.setFont(bigButton);
         launchButton.setText("PLAY");
         launchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -473,7 +539,7 @@ public class LauncherFrame extends JFrame {
                 launchButton.setPreferredSize(new Dimension(72, 50));
             }
         });
-        launchButton.setPreferredSize(new Dimension(72, 50));
+        launchButton.setSize(100,50);
         container.add(launchButton);
         launchButton.addActionListener(new ActionListener() {
             @Override
@@ -514,7 +580,7 @@ public class LauncherFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 loadInstances();
                 launcher.getUpdateManager().checkForUpdate();
-                webView.browse(launcher.getNewsURL(), false);
+                //webView.browse(launcher.getNewsURL(), false);
             }
         });
         instancesTable.addMouseListener(new PopupMouseAdapter() {
@@ -526,22 +592,26 @@ public class LauncherFrame extends JFrame {
                     instancesTable.setRowSelectionInterval(index, index);
                     selected = launcher.getInstances().get(index);
                 }
-                popupInstanceMenu(e.getComponent(), -1, -205, selected);
+                popupInstanceMenu(e.getComponent(), 0, 0, selected);
             }
         });
 		//magic :) love u fanbus
-		instancesTable.addMouseListener(new MouseAdapter() {
+		launchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent arg0) {
                 if (arg0.getButton() == MouseEvent.BUTTON1){
+					//Instance selected = null;
+					//selected = launcher.getInstances().get(0);
+					//popupInstanceMenu(launchButton, -1, -205, selected);
+                    //System.out.println("Left button clicked, select a task or click Play!");
+                } else if (arg0.getButton() == MouseEvent.BUTTON2){
+                    //System.out.println("Middle button clicked, select a task or click Play!");
+                } else if (arg0.getButton() == MouseEvent.BUTTON3) {
 					Instance selected = null;
 					selected = launcher.getInstances().get(0);
-					popupInstanceMenu(instancesTable, -1, -205, selected);
-                    System.out.println("Left button clicked, select a task or click Play!");
-                } else if (arg0.getButton() == MouseEvent.BUTTON2){
-                    System.out.println("Middle button clicked, select a task or click Play!");
-                } else if (arg0.getButton() == MouseEvent.BUTTON3) {
-                    System.out.println("Right button clicked, select a task or click Play!");
+					Integer width = launchButton.getWidth();
+					popupInstanceMenu(container, 0, -1, selected);
+                    //System.out.println("Right button clicked, select a task or click Play!");
                 } 
             }
         });
@@ -574,6 +644,7 @@ public class LauncherFrame extends JFrame {
     private void popupInstanceMenu(Component component, int x, int y, final Instance selected) {
         JPopupMenu popup = new JPopupMenu();
         JMenuItem menuItem;
+		popup.setPreferredSize(new Dimension(component.getWidth(),200));
 
         if (selected != null) {
             menuItem = new JMenuItem(!selected.isLocal() ? tr("instance.install") : tr("instance.launch"));
