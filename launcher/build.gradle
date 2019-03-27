@@ -1,0 +1,38 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'application'
+mainClassName = 'com.launcher.launcher.FancyLauncher'
+
+jar {
+    manifest {
+        attributes("Main-Class": "com.launcher.launcher.FancyLauncher")
+    }
+}
+
+dependencies {
+    compile 'org.projectlombok:lombok:1.16.20'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
+    compile 'commons-lang:commons-lang:2.6'
+    compile 'commons-io:commons-io:2.6'
+    compile 'com.google.guava:guava:19.0'
+    compile 'com.beust:jcommander:1.72'
+    compile 'com.miglayout:miglayout:3.7.4'
+    compile 'com.google.code.findbugs:jsr305:3.0.2'
+    compile 'com.github.insubstantial:substance:7.3'
+    compile 'com.github.oshi:oshi-core:3.4.4'
+}
+
+processResources {
+    filesMatching('**/*.properties') {
+        filter {
+            it.replace('${project.version}', project.version)
+        }
+    }
+}
+
+shadowJar {
+    dependencies {
+        exclude(dependency('org.projectlombok:lombok'))
+    }
+}
+
+build.dependsOn(shadowJar)
