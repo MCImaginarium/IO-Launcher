@@ -70,7 +70,7 @@ public class SpecsDialog extends JDialog {
         JPanel container = new JPanel();
         container.setLayout(new MigLayout("insets dialog"));
         
-        container.add(new JLabel("<html><img src=https://www.worldautomation.net/images/launcher-about.png>"), "align center, wrap");
+        container.add(new JLabel("<html><img src=https://www.iocraft.org/images/launcher-about.png>"), "align center, wrap");
         container.add(new JLabel("<html><h2>System Specifications Summary</h2><br>"), "align center, wrap");
         container.add(new JLabel("<html><b>Computer Manufacturer: </b>" + computerSystem.getManufacturer() + "<br>"), labelOpts);
         container.add(new JLabel("<html><b>Computer Manufacturer: </b>" + computerSystem.getModel() + "<br>"), labelOpts);
@@ -87,13 +87,13 @@ public class SpecsDialog extends JDialog {
         container.add(new JLabel("<html><b>Java Architecture: </b>" + System.getProperty("sun.arch.data.model") + "-Bit<br><br>"), labelOpts);
         container.add(new JLabel("<html><br><br>"), "align left, wrap");
         
-        //JButton discordButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-about-discord.png>");
+        //JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-about-discord.png>");
         //container.add(discordButton, "align center, wrap");
         //discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/Dvjvtee"));
         
         //JButton sourceCodeButton = new JButton("Website");
         //container.add(sourceCodeButton, "span, split 3, sizegroup bttn");
-        //sourceCodeButton.addActionListener(ActionListeners.openURL(this, "https://www.worldautomation.net"));
+        //sourceCodeButton.addActionListener(ActionListeners.openURL(this, "https://www.iocraft.org"));
         
         JButton okButton = new JButton("OK");
         container.add(okButton, "tag ok, sizegroup bttn");

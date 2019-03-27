@@ -1,7 +1,7 @@
 /*
 * IO-Launcher Launcher
 * Based off of sk89q's Source
-* https://www.worldautomation.net
+* https://www.iocraft.org
 */
 
 package com.launcher.concurrency;

@@ -48,11 +48,11 @@ public class LauncherFrame extends JFrame {
     private final JScrollPane instanceScroll = new JScrollPane(instancesTable);
     private WebpagePanel webView;
     private JSplitPane splitPane;
-    private final JButton launchButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-launch.png>");
-    private final JButton refreshButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-refresh.png>");
-    private final JButton optionsButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-options.png>");
-    private final JButton specsUpdateButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-specs.png>");
-    //private final JButton websiteButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-web.png>");
+    private final JButton launchButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-launch.png>");
+    private final JButton refreshButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-refresh.png>");
+    private final JButton optionsButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-options.png>");
+    private final JButton specsUpdateButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-specs.png>");
+    //private final JButton websiteButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-web.png>");
     private final JCheckBox updateCheck = new JCheckBox(SharedLocale.tr("launcher.downloadUpdates"));
     private boolean isUpdateable = false;
 
@@ -99,9 +99,9 @@ public class LauncherFrame extends JFrame {
 		splitPane.setSize(800, 530);
 		isUpdateable = launcher.getUpdateManager().getPendingUpdate();
         if (isUpdateable) {
-            specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-update.png>");
+            specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-update.png>");
         } else {
-            specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-specs.png>");
+            specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-specs.png>");
         }
         specsUpdateButton.setVisible(true);
         launcher.getUpdateManager().addPropertyChangeListener(new PropertyChangeListener() {
@@ -110,9 +110,9 @@ public class LauncherFrame extends JFrame {
                 if (evt.getPropertyName().equals("pendingUpdate")) {
                     isUpdateable = (boolean) evt.getNewValue();
                     if (isUpdateable) {
-                        specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-update.png>");
+                        specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-update.png>");
                     } else {
-                        specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-specs.png>");
+                        specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-specs.png>");
                     }
 
                 }
@@ -135,15 +135,15 @@ public class LauncherFrame extends JFrame {
         container.add(refreshButton);
         container.add(updateCheck);
 
-	JButton discordButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-discord.png>");
+	JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-discord.png>");
 	container.add(discordButton);
 	discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/Dvjvtee"));
 	
-	JButton webButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-web.png>");
+	JButton webButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-web.png>");
 	container.add(webButton);
-	webButton.addActionListener(ActionListeners.openURL(this, "https://www.worldautomation.net"));
+	webButton.addActionListener(ActionListeners.openURL(this, "https://www.iocraft.org"));
 
-	JButton logButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-log.png>");
+	JButton logButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-log.png>");
 	container.add(logButton);
         
         container.add(specsUpdateButton);
@@ -238,7 +238,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				webButton.setBackground(UIManager.getColor("control"));
-				webButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-web.png>");
+				webButton.setText("<html><img src=https://www.iocraft.org/images/launcher-web.png>");
 				webButton.setPreferredSize(new Dimension(50, 30));
 			}
 		});
@@ -251,7 +251,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				logButton.setBackground(UIManager.getColor("control"));
-				logButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-log.png>");
+				logButton.setText("<html><img src=https://www.iocraft.org/images/launcher-log.png>");
 				logButton.setPreferredSize(new Dimension(50, 30));
 			}
 		});
@@ -264,7 +264,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				launchButton.setBackground(UIManager.getColor("control"));
-				launchButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-launch.png>");
+				launchButton.setText("<html><img src=https://www.iocraft.org/images/launcher-launch.png>");
 				launchButton.setPreferredSize(new Dimension(50, 30));
 			}
 		});
@@ -277,7 +277,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				optionsButton.setBackground(UIManager.getColor("control"));
-				optionsButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-options.png>");
+				optionsButton.setText("<html><img src=https://www.iocraft.org/images/launcher-options.png>");
 				optionsButton.setPreferredSize(new Dimension(50, 30));
 			}
 		});
@@ -291,9 +291,9 @@ public class LauncherFrame extends JFrame {
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				specsUpdateButton.setBackground(UIManager.getColor("control"));
                                 if (isUpdateable) {
-                                    specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-update.png>");
+                                    specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-update.png>");
                                 } else {
-                                    specsUpdateButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-specs.png>");
+                                    specsUpdateButton.setText("<html><img src=https://www.iocraft.org/images/launcher-specs.png>");
                                 }
 				specsUpdateButton.setPreferredSize(new Dimension(50, 30));
 			}
@@ -307,7 +307,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				refreshButton.setBackground(UIManager.getColor("control"));
-				refreshButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-refresh.png>");
+				refreshButton.setText("<html><img src=https://www.iocraft.org/images/launcher-refresh.png>");
 				//refreshButton.setPreferredSize(new Dimension(50, 30));				
 			}
 		});	
@@ -320,7 +320,7 @@ public class LauncherFrame extends JFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				discordButton.setBackground(UIManager.getColor("control"));
-				discordButton.setText("<html><img src=https://www.worldautomation.net/images/launcher-discord.png>");
+				discordButton.setText("<html><img src=https://www.iocraft.org/images/launcher-discord.png>");
 				//discordButton.setPreferredSize(new Dimension(50, 30));
 			}
 		});

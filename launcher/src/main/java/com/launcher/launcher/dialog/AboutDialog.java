@@ -29,7 +29,7 @@ public class AboutDialog extends JDialog {
         JPanel container = new JPanel();
         container.setLayout(new MigLayout("insets dialog"));
 
-        container.add(new JLabel("<html><center><img src=https://www.worldautomation.net/images/launcher-about.png>"), "align center, wrap");
+        container.add(new JLabel("<html><center><img src=https://www.iocraft.org/images/launcher-about.png>"), "align center, wrap");
         container.add(new JLabel("<html>Licensed under GNU General Public License, version 3.<br><br>"), "align center, wrap");
         container.add(new JLabel("<html>You are using IO-Launcher, an open-source customizable<br>"), "align center, wrap");
         container.add(new JLabel("<html>launcher platform that anyone can use.<br><br>"), "align center, wrap");
@@ -37,7 +37,7 @@ public class AboutDialog extends JDialog {
         container.add(new JLabel("<html>the launcher that you are using.<br><br>"), "align center, wrap");
         container.add(new JLabel("<html>Original Source Credit to SKCraft.</center><br><br>"), "align center, wrap");
         
-		JButton discordButton = new JButton("<html><img src=https://www.worldautomation.net/images/launcher-about-discord.png>");
+		JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-about-discord.png>");
 		container.add(discordButton, "align center, wrap");
 		discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/Dvjvtee"));
 		
@@ -53,7 +53,7 @@ public class AboutDialog extends JDialog {
         getRootPane().registerKeyboardAction(ActionListeners.dispose(this), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         okButton.addActionListener(ActionListeners.dispose(this));
-        sourceCodeButton.addActionListener(ActionListeners.openURL(this, "https://www.worldautomation.net"));
+        sourceCodeButton.addActionListener(ActionListeners.openURL(this, "https://www.iocraft.org"));
 
     }
 
