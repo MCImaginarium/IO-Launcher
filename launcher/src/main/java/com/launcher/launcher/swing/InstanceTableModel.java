@@ -25,7 +25,7 @@ public class InstanceTableModel extends AbstractTableModel {
         this.instances = instances;
         instanceIcon = SwingHelper.createIcon(FancyLauncher.class, "instance_icon.png", 38, 38);
         customInstanceIcon = SwingHelper.createIcon(FancyLauncher.class, "custom_instance_icon.png", 38, 38);
-        downloadIcon = SwingHelper.createIcon(FancyLauncher.class, "download_icon.png", 36, 36);
+        downloadIcon = SwingHelper.createIcon(FancyLauncher.class, "download_icon.png", 25, 25);
     }
 
     public void update() {

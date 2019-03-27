@@ -203,7 +203,7 @@ public class LauncherFrame extends JFrame {
         discordButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 discordButton.setIcon(null);
-                discordButton.setText("CHAT");
+                discordButton.setText("DISCORD");
                 discordButton.setBackground(Color.GREEN);
                 discordButton.setPreferredSize(new Dimension(72, 50));
             }
@@ -231,7 +231,7 @@ public class LauncherFrame extends JFrame {
         webButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 webButton.setIcon(null);
-                webButton.setText("CHAT");
+                webButton.setText("WEBSITE");
                 webButton.setBackground(Color.GREEN);
                 webButton.setPreferredSize(new Dimension(72, 50));
             }
@@ -450,10 +450,11 @@ public class LauncherFrame extends JFrame {
        
         //START Launch Button
         JButton launchButton = new JButton();
-        try {
-            Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
-            launchButton.setIcon(new ImageIcon(launchImage));
-        } catch (Exception ex) {}   
+        //try {
+            //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
+            //launchButton.setIcon(new ImageIcon(launchImage));
+        //} catch (Exception ex) {}   
+        launchButton.setText("PLAY");
         launchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 launchButton.setIcon(null);
@@ -463,11 +464,12 @@ public class LauncherFrame extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 launchButton.setText(null);
+                launchButton.setText("PLAY");
                 launchButton.setBackground(UIManager.getColor("control"));
-                try {
-                    Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
-                    launchButton.setIcon(new ImageIcon(launchImage));
-                } catch (Exception ex) {}   
+                //try {
+                    //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
+                    //launchButton.setIcon(new ImageIcon(launchImage));
+                //} catch (Exception ex) {}   
                 launchButton.setPreferredSize(new Dimension(72, 50));
             }
         });
@@ -487,10 +489,11 @@ public class LauncherFrame extends JFrame {
 			}
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				launchButton.setBackground(UIManager.getColor("control"));
-                try {
-                    Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
-                    launchButton.setIcon(new ImageIcon(launchImage));
-                } catch (Exception ex) {}  
+                //try {
+                    //Image launchImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/launch.png"));
+                    //launchButton.setIcon(new ImageIcon(launchImage));
+                //} catch (Exception ex) {}
+                launchButton.setText("PLAY");				
                 refreshButton.setPreferredSize(new Dimension(72, 50));
 			}
         });
@@ -534,11 +537,11 @@ public class LauncherFrame extends JFrame {
 					Instance selected = null;
 					selected = launcher.getInstances().get(0);
 					popupInstanceMenu(instancesTable, -1, -205, selected);
-                    System.out.println("Left button clicked");
+                    System.out.println("Left button clicked, select a task or click Play!");
                 } else if (arg0.getButton() == MouseEvent.BUTTON2){
-                    System.out.println("Middle button clicked");
+                    System.out.println("Middle button clicked, select a task or click Play!");
                 } else if (arg0.getButton() == MouseEvent.BUTTON3) {
-                    System.out.println("Right button clicked");
+                    System.out.println("Right button clicked, select a task or click Play!");
                 } 
             }
         });
