@@ -32,6 +32,7 @@ import static com.launcher.launcher.util.SharedLocale.tr;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import javax.imageio.ImageIO;
 
 /**
  * The main launcher frame.
@@ -135,7 +136,15 @@ public class LauncherFrame extends JFrame {
         container.add(refreshButton);
         container.add(updateCheck);
 
-	JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-discord.png>");
+	
+	JButton discordButton = new JButton();
+  try {
+    Image img = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/discord.png"));
+    discordButton.setIcon(new ImageIcon(img));
+  } catch (Exception ex) {
+    System.out.println(ex);
+  }
+  
 	container.add(discordButton);
 	discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/UGHFX3Q"));
 	
