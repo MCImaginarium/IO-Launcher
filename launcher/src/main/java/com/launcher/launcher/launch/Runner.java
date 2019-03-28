@@ -320,7 +320,7 @@ public class Runner implements Callable<Process>, ProgressObservable {
             args.add("--height");
             args.add(String.valueOf(height));
 			args.add("--server");
-			args.add("portal.iocraft.org");
+			args.add("play.iocraft.org");
 			args.add("--port");
 			args.add("25565");
         }
