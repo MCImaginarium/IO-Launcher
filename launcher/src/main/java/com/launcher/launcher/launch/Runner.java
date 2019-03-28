@@ -319,6 +319,7 @@ public class Runner implements Callable<Process>, ProgressObservable {
             args.add(String.valueOf(width));
             args.add("--height");
             args.add(String.valueOf(height));
+            //args.add("--fullscreen");			
         }
     }
 

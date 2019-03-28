@@ -27,8 +27,8 @@ public class Configuration {
     private int minMemory = 1024;
     private int maxMemory = 4096; // Updated in Launcher
     private int permGen = 256;
-    private int windowWidth = 800;
-    private int widowHeight = 550;
+    private int windowWidth = 780;
+    private int widowHeight = 500;
     private boolean proxyEnabled = false;
     private String proxyHost = "localhost";
     private int proxyPort = 8080;
