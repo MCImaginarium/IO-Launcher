@@ -32,10 +32,9 @@ public class AboutDialog extends JDialog {
         container.add(new JLabel("<html><center><img width=80 height=80 src=https://www.iocraft.org/wp-content/uploads/2019/03/256x256.png>"), "align center, wrap");
         container.add(new JLabel("<html>Licensed under GNU General Public License, version 3.<br><br>"), "align center, wrap");
         container.add(new JLabel("<html>You are using IO-Launcher, an open-source customizable<br>"), "align center, wrap");
-        container.add(new JLabel("<html>launcher platform that anyone can use.<br><br>"), "align center, wrap");
-        container.add(new JLabel("<html>WA does not necessarily endorse the version of<br>"), "align center, wrap");
-        container.add(new JLabel("<html>the launcher that you are using.<br><br>"), "align center, wrap");
-        container.add(new JLabel("<html>Original Source Credit to SKCraft.</center><br><br>"), "align center, wrap");
+        container.add(new JLabel("<html>launcher for Minecraft that anyone can use.<br><br>"), "align center, wrap");
+        container.add(new JLabel("<html>This is the offical launcher for our game and server.<br>"), "align center, wrap");
+        container.add(new JLabel("<html>You are free to use this software anyway you please, without limitations.<br><br>"), "align center, wrap");
         
         JButton sourceCodeButton = new JButton("Website");      
 		container.add(sourceCodeButton, "span, split 3, sizegroup bttn");
