@@ -29,7 +29,7 @@ public class AboutDialog extends JDialog {
         JPanel container = new JPanel();
         container.setLayout(new MigLayout("insets dialog"));
 
-        container.add(new JLabel("<html><center><img src=https://www.iocraft.org/images/launcher-about.png>"), "align center, wrap");
+        container.add(new JLabel("<html><center><img width=80 height=80 src=https://www.iocraft.org/wp-content/uploads/2019/03/256x256.png>"), "align center, wrap");
         container.add(new JLabel("<html>Licensed under GNU General Public License, version 3.<br><br>"), "align center, wrap");
         container.add(new JLabel("<html>You are using IO-Launcher, an open-source customizable<br>"), "align center, wrap");
         container.add(new JLabel("<html>launcher platform that anyone can use.<br><br>"), "align center, wrap");
@@ -37,10 +37,6 @@ public class AboutDialog extends JDialog {
         container.add(new JLabel("<html>the launcher that you are using.<br><br>"), "align center, wrap");
         container.add(new JLabel("<html>Original Source Credit to SKCraft.</center><br><br>"), "align center, wrap");
         
-		JButton discordButton = new JButton("<html><img src=https://www.iocraft.org/images/launcher-about-discord.png>");
-		container.add(discordButton, "align center, wrap");
-		discordButton.addActionListener(ActionListeners.openURL(this, "https://discord.gg/UGHFX3Q"));
-		
         JButton sourceCodeButton = new JButton("Website");      
 		container.add(sourceCodeButton, "span, split 3, sizegroup bttn");
         
