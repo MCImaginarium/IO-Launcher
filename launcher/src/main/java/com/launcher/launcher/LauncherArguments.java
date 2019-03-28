@@ -25,5 +25,5 @@ public class LauncherArguments {
 
     @Parameter(names = "--portable")
     private boolean portable;
-
+	
 }
