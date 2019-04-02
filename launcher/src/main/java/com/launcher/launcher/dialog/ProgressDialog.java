@@ -80,7 +80,7 @@ public class ProgressDialog extends JDialog {
     private void setDetailsSize() {
         detailsButton.setText(SharedLocale.tr("progress.less"));
         logButton.setVisible(true);
-        setSize(700, 550);
+        setSize(700, 300);
     }
 
     private void initComponents() {
