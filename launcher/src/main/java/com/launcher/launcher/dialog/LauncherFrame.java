@@ -40,7 +40,6 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.awt.image.BufferedImage;
-
 import static com.launcher.launcher.util.SharedLocale.tr;
 import java.io.IOException;
 import java.net.URI;

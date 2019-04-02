@@ -1,14 +1,7 @@
-/*
- * SK's Minecraft Launcher
- * Copyright (C) 2010-2014 Albert Pham <http://www.sk89q.com> and contributors
- * Please see LICENSE.txt for license information.
- */
-
 package com.launcher.launcher.dialog;
-
+import com.launcher.launcher.FancyBackgroundPanel;
 import com.launcher.launcher.swing.ActionListeners;
 import net.miginfocom.swing.MigLayout;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -21,7 +14,7 @@ import oshi.hardware.Firmware;
 import oshi.hardware.GlobalMemory;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.util.FormatUtil;
-
+import javax.imageio.ImageIO;
 @Log
 public class SpecsDialog extends JDialog {
 
@@ -47,7 +40,7 @@ public class SpecsDialog extends JDialog {
         loadSpecs(container);
         
         pack();
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(null);
     }
     
     private void loadSpecs(JPanel oldContainer) {
@@ -69,8 +62,12 @@ public class SpecsDialog extends JDialog {
         final String labelOpts = "align center, wrap";
         JPanel container = new JPanel();
         container.setLayout(new MigLayout("insets dialog"));
-        
-        container.add(new JLabel("<html><img src=https://www.iocraft.org/images/launcher-about.png>"), "align center, wrap");
+		try {
+			Image logoImage = ImageIO.read(FancyBackgroundPanel.class.getResourceAsStream("buttons/96x96.png"));
+			ImageIcon logoIcon = new ImageIcon(logoImage); 	
+			JLabel logoLabel = new JLabel(null, logoIcon, SwingConstants.CENTER);
+			container.add(logoLabel, "align center, wrap");
+		} catch (Exception ex) {} 
         container.add(new JLabel("<html><h2>System Specifications Summary</h2><br>"), "align center, wrap");
         container.add(new JLabel("<html><b>Computer Manufacturer: </b>" + computerSystem.getManufacturer() + "<br>"), labelOpts);
         container.add(new JLabel("<html><b>Computer Manufacturer: </b>" + computerSystem.getModel() + "<br>"), labelOpts);
